@@ -76,7 +76,7 @@ def test(got, expected):
     else:
         prefix = '  X '
     # print('%s got: %s expected: %s' % (prefix, repr(got), repr(expected)))
-    print(f'{prefix} got {repr(got)} expected {repr(expected)}')
+    print(f'{prefix} got {repr(got)} expected: {repr(expected)}')
 
 
 # Provided main() calls the above functions with interesting inputs,
