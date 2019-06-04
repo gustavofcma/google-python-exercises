@@ -17,8 +17,13 @@
 # If the string length is less than 3, leave it unchanged.
 # Return the resulting string.
 def verbing(s):
-    # +++your code here+++
-    return
+    word = s
+    if len(s) >= 3:
+        if s[-3:].lower() == 'ing':
+            word += 'ly'
+        else:
+            word += 'ing'
+    return word
 
 
 # E. not_bad
@@ -30,8 +35,10 @@ def verbing(s):
 # So 'This dinner is not that bad!' yields:
 # This dinner is good!
 def not_bad(s):
-    # +++your code here+++
-    return
+    if s.find('bad') > 0 and s.find('bad') > s.find('not'):
+        old_text = s[s.find('not'):s.find('bad')+3]
+        s = s.replace(old_text, 'good')
+    return s
 
 
 # F. front_back
@@ -42,8 +49,11 @@ def not_bad(s):
 # Given 2 strings, a and b, return a string of the form
 #  a-front + b-front + a-back + b-back
 def front_back(a, b):
-    # +++your code here+++
-    return
+    a_front = a[:len(a) // 2 + len(a) % 2]
+    b_front = b[:len(b) // 2 + len(b) % 2]
+    a_back = a[len(a) // 2 + len(a) % 2:]
+    b_back = b[len(b) // 2 + len(b) % 2:]
+    return a_front + b_front + a_back + b_back
 
 
 # Simple provided test() function used in main() to print
@@ -53,7 +63,8 @@ def test(got, expected):
         prefix = ' OK '
     else:
         prefix = '  X '
-    print('%s got: %s expected: %s' % (prefix, repr(got), repr(expected)))
+    # print('%s got: %s expected: %s' % (prefix, repr(got), repr(expected)))
+    print(f'{prefix} got {repr(got)} expected: {repr(expected)}')
 
 
 # main() calls the above functions with interesting inputs,
